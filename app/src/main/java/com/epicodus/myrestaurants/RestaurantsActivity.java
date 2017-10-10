@@ -21,6 +21,7 @@ public class RestaurantsActivity extends AppCompatActivity {
             "10 Barrel Brewery", "DarSalam Lazurdi", "Whole Bowl", "Syun Izakaya", "Petunia's",
             "Nong's Khao Man Gai", "Little Bird", "Tin Shed", "Trinket Brunch", "Tao of Tea",
             "Head Waters", "Jacquline", "Sizzle Pie", "Noraneko"};
+    public String[] cuisines = new String[] {"Vegan Food", "Breakfast", "Fishs Dishs", "Scandinavian", "Coffee", "English Food", "Burgers", "Fast Food", "Noodle Soups", "Mexican", "BBQ", "Cuban", "Bar Food", "Sports Bar", "Breakfast", "Mexican"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class RestaurantsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants);
+        MyRestaurantsArrayAdapter adapter = new MyRestaurantsArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants, cuisines);
         mListView.setAdapter(adapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

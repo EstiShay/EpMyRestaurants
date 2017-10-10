@@ -24,6 +24,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
@@ -41,3 +43,4 @@ dependencies {
     testCompile 'org.robolectric:shadows-support-v4:3.0'
     compile 'com.jakewharton:butterknife:7.0.1'
 }
+
