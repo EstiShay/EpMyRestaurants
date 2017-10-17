@@ -1,4 +1,4 @@
-package com.epicodus.myrestaurants;
+package com.epicodus.myrestaurants.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,12 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.epicodus.myrestaurants.R;
+
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    @Bind(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
+    @Bind(R.id.findRestaurantsButton)
+    Button mFindRestaurantsButton;
     @Bind(R.id.locationEditText) EditText mLocationEditText;
     @Bind(R.id.appNameTextView) TextView mAppNameTextView;
 
