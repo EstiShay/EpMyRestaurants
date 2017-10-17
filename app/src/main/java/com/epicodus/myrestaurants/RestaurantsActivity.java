@@ -33,8 +33,8 @@ public class RestaurantsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants);
+
         mListView.setAdapter(adapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

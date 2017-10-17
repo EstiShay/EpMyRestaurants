@@ -24,9 +24,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     buildTypes.each {
         it.buildConfigField 'String', 'YELP_TOKEN', YelpToken
     }
+
 }
 
 dependencies {
@@ -45,3 +47,4 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
 }
+
