@@ -1,5 +1,7 @@
 package com.epicodus.myrestaurants.services;
 
+import android.util.Log;
+
 import com.epicodus.myrestaurants.Constants;
 import com.epicodus.myrestaurants.models.Restaurant;
 
@@ -26,6 +28,7 @@ public class YelpService {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.YELP_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter(Constants.YELP_LOCATION_QUERY_PARAMETER, location);
         String url = urlBuilder.build().toString();
+        Log.v("this is the url", url);
 
         Request request = new Request.Builder()
                 .url(url)
@@ -39,6 +42,7 @@ public class YelpService {
 
     public ArrayList<Restaurant> processResults(Response response) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
+        Log.v("hello", "world");
 
         try {
             String jsonData = response.body().string();
@@ -50,17 +54,21 @@ public class YelpService {
                 String phone = restaurantJSON.optString("display_phone", "Phone not available");
                 String website = restaurantJSON.getString("url");
                 double rating = restaurantJSON.getDouble("rating");
-                String imageUrl = restaurantJSON.getString("imageUrl");
+
+                String imageUrl = restaurantJSON.optString("imageUrl");
+
                 double latitude = (double) restaurantJSON.getJSONObject("coordinates").getDouble
                         ("latitude");
                 double longitude = (double) restaurantJSON.getJSONObject("coordinates").getDouble
                         ("longitude");
+
                 ArrayList<String> address = new ArrayList<>();
                 JSONArray addressJSON = restaurantJSON.getJSONObject("location").getJSONArray
                         ("display_address");
                 for (int y = 0; y < addressJSON.length(); y++) {
                     address.add(addressJSON.get(y).toString());
                 }
+
                 ArrayList<String> categories = new ArrayList<>();
                 JSONArray categoriesJSON = restaurantJSON.getJSONArray("categories");
                 for (int y = 0; y < categoriesJSON.length(); y++){
@@ -68,6 +76,7 @@ public class YelpService {
                 }
                 Restaurant restaurant = new Restaurant(name, phone, website, rating, imageUrl,
                         address, latitude, longitude, categories);
+                restaurants.add(restaurant);
             }
         } catch (IOException e) {
           e.printStackTrace();
